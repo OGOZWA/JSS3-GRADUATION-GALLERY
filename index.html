@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JSS3 Graduation Gallery</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" href="logo.png">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="nav-left">
+
+            <img src="logo.png" alt="School Logo" class="nav-logo">
+
+            <div>
+
+                <h2>JSS3 Gallery</h2>
+
+                <small>Graduation Memories</small>
+
+            </div>
+
+        </div>
+
+        <ul class="nav-links">
+
+            <li><a href="gallery.html">Home</a></li>
+
+            <li><a href="#" id="studentAccess" onclick="studentAccess()">Student Access</a></li>
+
+            <li><a href="#" id="guestaccess" onclick="GuestAccess()">guest access</a></li>
+            <script>
+function GuestAccess() {
+    window.location.href = "gallery.html";
+}
+</script>
+
+            
+                <button id="uploadbtn">Upload</button>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>Welcome to the JSS3 Graduation Gallery</h1>
+
+        <p>
+            Browse, download and relive the unforgettable memories
+            from our graduation ceremony.
+        </p>
+
+    </section>
+
+    <!-- FILE INPUT -->
+
+    <input
+        type="file"
+        id="fileInput"
+        accept="image/*"
+        multiple
+        hidden>
+
+    <!-- GALLERY -->
+
+    <main class="gallery-container">
+
+        <div id="gallery" class="gallery-grid"></div>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>© 2026 JSS3 Graduation Gallery</p>
+
+    </footer>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>
+<div class="gallery-grid">
+    <img src="images/photo1.jpg" alt="">
+    <img src="images/photo2.jpg" alt="">
+    <img src="images/photo3.jpg" alt="">
+</div>
