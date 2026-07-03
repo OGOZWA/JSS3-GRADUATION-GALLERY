@@ -35,7 +35,7 @@ studentBtn.addEventListener("click", () => {
 
     const password = prompt("Enter Student Password");
 
-    if (password === "jss3") {
+    if (password === "graduation gallery") {
 
         isAdmin = true;
 
