@@ -18,6 +18,11 @@ const uploadBtn = document.getElementById("uploadbtn");
 const fileInput = document.getElementById("fileInput");
 const studentBtn = document.getElementById("studentAccess");
 
+// Lightbox Elements
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.querySelector(".close");
+
 // ======================
 // ADMIN MODE
 // ======================
@@ -35,7 +40,7 @@ studentBtn.addEventListener("click", () => {
 
     const password = prompt("Enter Student Password");
 
-    if (password === "graduationgallery") {
+    if (password === "jss3") {
 
         isAdmin = true;
 
@@ -73,19 +78,15 @@ async function loadGallery() {
         });
 
     if (error) {
-
         console.error(error);
-
         return;
-
     }
 
     for (const file of data) {
 
-        const { data: publicData } =
-            supabase.storage
-                .from("gallery")
-                .getPublicUrl(file.name);
+        const { data: publicData } = supabase.storage
+            .from("gallery")
+            .getPublicUrl(file.name);
 
         createCard(publicData.publicUrl, file.name);
 
@@ -105,14 +106,20 @@ function createCard(imageURL, fileName) {
     const img = document.createElement("img");
     img.src = imageURL;
 
+    // Open image in lightbox
+    img.addEventListener("click", () => {
+
+        lightbox.style.display = "flex";
+        lightboxImg.src = imageURL;
+
+    });
+
     card.appendChild(img);
 
-    // Download button
+    // Download Button
 
     const downloadBtn = document.createElement("button");
-
     downloadBtn.className = "download-btn";
-
     downloadBtn.innerHTML = "⬇";
 
     downloadBtn.onclick = async () => {
@@ -227,6 +234,27 @@ fileInput.addEventListener("change", async () => {
 });
 
 // ======================
+// LIGHTBOX
+// ======================
+
+closeBtn.addEventListener("click", () => {
+
+    lightbox.style.display = "none";
+
+});
+
+lightbox.addEventListener("click", (e) => {
+
+    if (e.target === lightbox) {
+
+        lightbox.style.display = "none";
+
+    }
+
+});
+
+// ======================
 // START APP
 // ======================
+
 loadGallery();
